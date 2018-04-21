@@ -5,7 +5,7 @@ import { Actions, Router, Scene } from 'react-native-router-flux';
 import HomeScreen from './src/components/screensComponent/homeScreen';
 
 const scenes = Actions.create(
-  <Scene key="root">
+  <Scene key="root" hideNavBar>
     <Scene key="home" component={HomeScreen} title="Home"/>
   </Scene>
 )
