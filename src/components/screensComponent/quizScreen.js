@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   View,
@@ -7,9 +8,12 @@ import {
 
 export default class QuizScreen extends Component {
   static propTypes = {
-    list: PropTypes.array,
-  };
+    list: PropTypes.array
+  }
 
+  static defaultProps = {
+    list: []
+  }
 
   constructor(props) {
     super(props);
