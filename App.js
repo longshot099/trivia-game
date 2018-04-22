@@ -1,26 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Actions, Router, Scene } from 'react-native-router-flux';
+
+//Screen Components
+import HomeScreen from './src/components/screensComponent/homeScreen';
+import QuizScreen from './src/components/screensComponent/quizScreen';
+
+const scenes = Actions.create(
+  <Scene key="root" hideNavBar>
+    <Scene key="home" component={HomeScreen} title="Home"/>
+    <Scene key="quiz" component={QuizScreen} title="Quiz"/>
+  </Scene>
+)
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>
-          Welcome to the Trivia Game! Tap BEGIN to start.
-        </Text>
-      </View>
+      <Router scenes={scenes} />
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  title: {
-    fontSize: 20
-  }
-});
