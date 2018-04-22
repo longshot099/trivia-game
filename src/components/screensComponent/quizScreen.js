@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import {
   StyleSheet,
   View,
@@ -6,8 +6,17 @@ import {
 } from 'react-native';
 
 export default class QuizScreen extends Component {
+  static propTypes = {
+    list: PropTypes.array,
+  };
+
+
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
+    console.log(this.props.list)
   }
 
   render() {

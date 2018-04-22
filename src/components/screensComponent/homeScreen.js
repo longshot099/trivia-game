@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
     getTriviaList().then(res => {
       this.setState({
         triviaList: res.results 
-      }, () => console.log(Actions.quiz()))
+      }, () => console.log(Actions.quiz({list: this.state.triviaList})))
     })
   }
 
