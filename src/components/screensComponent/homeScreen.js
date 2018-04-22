@@ -18,8 +18,11 @@ export default class HomeScreen extends Component {
   }
 
   startTrivia = () => {
-    getTriviaList().then(res => this.setState({ triviaList: res.results }))
-
+    getTriviaList().then(res => {
+      this.setState({
+        triviaList: res.results 
+      }, () => console.log('hi', this.state))
+    })
   }
 
   render() {
