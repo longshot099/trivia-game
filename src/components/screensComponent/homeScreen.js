@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
     getTriviaList().then(res => {
       this.setState({
         triviaList: res.results 
-      }, () => console.log('hi', this.state))
+      }, () => console.log(Actions.quiz()))
     })
   }
 
@@ -36,7 +36,7 @@ export default class HomeScreen extends Component {
           style={styles.button}
           onPress={this.startTrivia}
         >
-          <Text>BEGIN</Text>
+          <Text style={styles.buttonText}>BEGIN</Text>
         </TouchableOpacity>
       </View>
     )
@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 15
+  },
+  buttonText: {
+    color: 'white'
   },
   button: {
     backgroundColor: '#007AFF',

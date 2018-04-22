@@ -12,7 +12,7 @@ export default class QuizScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Text>Quiz Screen</Text>
       </View>
     );
@@ -20,8 +20,10 @@ export default class QuizScreen extends Component {
 }
 
 const styles = StyleSheet.create({
-  title: {
-    justifyContent: 'center',
-    alignSelf: 'center'
-  }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
 })
