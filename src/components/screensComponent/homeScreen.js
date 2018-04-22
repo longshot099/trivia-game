@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Actions } from 'react-native-router-flux';
 import {
   StyleSheet,
   View,
@@ -6,10 +7,19 @@ import {
   TouchableOpacity
 } from 'react-native';
 
-export default class HomeScreen extends Component {
+import { getTriviaList } from '../../helpers';
 
-  startTrivia() {
-    console.log("go to trivia game")
+export default class HomeScreen extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      triviaList: null
+    }
+  }
+
+  startTrivia = () => {
+    getTriviaList().then(res => this.setState({ triviaList: res.results }))
+
   }
 
   render() {
