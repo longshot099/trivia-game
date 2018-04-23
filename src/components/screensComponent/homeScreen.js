@@ -21,7 +21,7 @@ export default class HomeScreen extends Component {
     getTriviaList().then(res => {
       this.setState({
         triviaList: res.results 
-      }, () => console.log(Actions.quiz()))
+      }, () => Actions.quiz({list: this.state.triviaList}))
     })
   }
 
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     fontSize: 15
@@ -64,3 +64,11 @@ const styles = StyleSheet.create({
     paddingRight: 40
   }
 });
+
+
+
+
+
+
+
+
