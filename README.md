@@ -1,1 +1,1 @@
-Trivia application
+Optimized for Iphone X.
