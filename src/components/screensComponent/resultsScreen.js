@@ -40,7 +40,7 @@ export default class ResultsScreen extends Component {
         scrollEventThrottle={200}
       >
         <View style={styles.viewContainer}>
-          <Text style={styles.resultText}>Your Scored {score +"/10"}</Text>
+          <Text style={styles.resultText}>You Scored {score +"/10"}</Text>
           <Text style={styles.resultText}>Your Results</Text>
 
           <View style={styles.resultsContainer}>
