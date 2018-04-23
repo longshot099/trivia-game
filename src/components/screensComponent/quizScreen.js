@@ -120,7 +120,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginTop: '15%',
     marginBottom: 10,
-    padding: 50,
+    width: '85%',
+    padding: 30,
     fontSize: 24
   },
   options: {

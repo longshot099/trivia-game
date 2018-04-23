@@ -62,6 +62,7 @@ export default class ResultsScreen extends Component {
           </View>
 
           <Button
+            style={styles.restartButton}
             title={"Play Again"}
             onPress={this.restartGame}
           />
@@ -80,7 +81,8 @@ const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 80
+    marginTop: 80,
+    marginBottom: 30
   },
   resultText: {
     fontSize: 20,

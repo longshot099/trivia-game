@@ -6,6 +6,7 @@ import {
   Text,
   TouchableOpacity
 } from 'react-native';
+import he from 'he';
 
 import { getTriviaList } from '../../helpers';
 
@@ -19,6 +20,9 @@ export default class HomeScreen extends Component {
 
   startTrivia = () => {
     getTriviaList().then(res => {
+      res.results.forEach(item => {
+        item.question = he.decode(item.question)
+      })
       this.setState({
         triviaList: res.results 
       }, () => Actions.quiz({list: this.state.triviaList}))
