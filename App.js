@@ -9,9 +9,9 @@ import ResultsScreen from './src/components/screensComponent/resultsScreen';
 
 const scenes = Actions.create(
   <Scene key="root" hideNavBar>
-    <Scene key="results" component={ResultsScreen} title="Results"/>
-    <Scene key="quiz" component={QuizScreen} title="Quiz"/>
     <Scene key="home" component={HomeScreen} title="Home"/>
+    <Scene key="quiz" component={QuizScreen} title="Quiz"/>
+    <Scene key="results" component={ResultsScreen} title="Results"/>
   </Scene>
 )
 

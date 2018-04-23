@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
   StyleSheet,
+  ScrollView,
   View,
   Text,
   Button
@@ -11,33 +12,14 @@ import { Actions } from 'react-native-router-flux';
 export default class ResultsScreen extends Component {
   static propTypes = {
     choices: PropTypes.array,
-    list: PropTypes.array
+    list: PropTypes.array,
+    score: PropTypes.number
   }
 
   static defaultProps = {
-    list: [
-      {
-        "category": "Entertainment: Video Games",
-        "type": "boolean",
-        "difficulty": "hard",
-        "question": "Unturned originally started as a Roblox game.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-          "False"
-        ]
-      },
-      {
-        "category": "History",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "George Washington was the 31st President of Australia.",
-        "correct_answer": "False",
-        "incorrect_answers": [
-          "True"
-        ]
-      }
-    ],
-    choices: ["False", "True"]
+    list: [],
+    choices: ["False", "False"],
+    score: 0
   }
 
   constructor(props) {
@@ -49,23 +31,76 @@ export default class ResultsScreen extends Component {
   }
 
   render() {
-    console.log(this.props.choices)
+    console.log(this.props);
+    const { score } = this.props;
+
     return (
-      <View style={styles.container}>
-        <Text>Results screen</Text>
-        <Button
-          title={"Play Again"}
-          onPress={this.restartGame}
-        />
-      </View>
+      <ScrollView style={styles.contentContainer}>
+        <View style={styles.viewContainer}>
+          <Text style={styles.resultText}>Your Scored {score +"/10"}</Text>
+          <Text style={styles.resultText}>Your Results</Text>
+
+          <View style={styles.resultsContainer}>
+            {this.props.list.map((listItem, ind) => {
+              const { correct_answer, question, difficulty } = listItem;
+              const playerChoice = this.props.choices[ind];
+              console.log(playerChoice, correct_answer);
+              if(playerChoice !== correct_answer) {
+                return (
+                  <Text key={ind} style={styles.incorrectText}>- {"(" + correct_answer.toUpperCase() + ") " + question}</Text>
+                )
+              } else {
+                return (
+                  <Text key={ind} style={styles.correctText}>+ {"(" + correct_answer.toUpperCase() + ") " + question}</Text>
+                )
+              }
+            })}
+          </View>
+
+          <Button
+            title={"Play Again"}
+            onPress={this.restartGame}
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: 'transparent',
+    paddingLeft:20,
+    paddingRight:20
+  },
+  viewContainer: {
     flex: 1,
     alignItems: 'center',
     marginTop: 80
+  },
+  resultText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 15
+  },
+  incorrectText: {
+    color: 'red',
+    fontSize: 15,
+    margin: 5,
+    padding: 10,
+    fontWeight: 'bold'
+  },
+  correctText: {
+    color: 'green',
+    fontSize: 15,
+    margin: 5,
+    padding: 10,
+    fontWeight: 'bold'
   }
-})
+});
+
+
+
+
+
+

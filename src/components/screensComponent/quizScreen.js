@@ -14,28 +14,7 @@ export default class QuizScreen extends Component {
   }
 
   static defaultProps = {
-    list: [
-      {
-        "category": "Entertainment: Video Games",
-        "type": "boolean",
-        "difficulty": "hard",
-        "question": "Unturned originally started as a Roblox game.",
-        "correct_answer": "True",
-        "incorrect_answers": [
-          "False"
-        ]
-      },
-      {
-        "category": "History",
-        "type": "boolean",
-        "difficulty": "easy",
-        "question": "George Washington was the 31st President of Australia.",
-        "correct_answer": "False",
-        "incorrect_answers": [
-          "True"
-        ]
-      }
-    ]
+    list: []
   }
 
   constructor(props) {
@@ -43,12 +22,25 @@ export default class QuizScreen extends Component {
     this.state = {
       list: this.props.list,
       num: 0,
-      choices: []
+      choices: [],
+      score: 0
     }
   }
 
+  calculateScore() {
+    let total = 0;
+    for(let i = 0; i < this.state.list.length; i++) {
+      console.log(this.state.choices[i] === this.state.list[i].correct_answer)
+      if(this.state.choices[i] === this.state.list[i].correct_answer) {
+        total++;
+      }
+    }
+
+    return total;
+  }
+
   chooseAnswer = (answer) => (event) => {
-    const MAX_COUNT = 1;
+    const MAX_COUNT = 9;
     const answerString = answer === true? "True" : "False";
 
     if(this.state.num === MAX_COUNT) {
@@ -57,9 +49,12 @@ export default class QuizScreen extends Component {
           choices: [...prevState.choices, answerString]
         }
       }, () => {
+        let totalScore = this.calculateScore();
+
         Actions.results({
           choices: this.state.choices,
-          list: this.state.list
+          list: this.state.list,
+          score: totalScore
         });
       });
     } else {
@@ -113,6 +108,8 @@ const styles = StyleSheet.create({
     marginTop: 80,
   },
   category: {
+    paddingRight: 5,
+    paddingLeft: 5,
     fontSize: 25,
     fontWeight: 'bold',    
     alignSelf: 'center',
