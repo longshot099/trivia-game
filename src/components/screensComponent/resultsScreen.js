@@ -31,7 +31,6 @@ export default class ResultsScreen extends Component {
   }
 
   render() {
-    console.log(this.props);
     const { score } = this.props;
 
     return (
@@ -48,7 +47,6 @@ export default class ResultsScreen extends Component {
             {this.props.list.map((listItem, ind) => {
               const { correct_answer, question, difficulty } = listItem;
               const playerChoice = this.props.choices[ind];
-              console.log(playerChoice, correct_answer);
               if(playerChoice !== correct_answer) {
                 return (
                   <Text key={ind} style={styles.incorrectText}>- {"(" + correct_answer.toUpperCase() + ") " + question}</Text>

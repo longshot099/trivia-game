@@ -30,7 +30,6 @@ export default class QuizScreen extends Component {
   calculateScore() {
     let total = 0;
     for(let i = 0; i < this.state.list.length; i++) {
-      console.log(this.state.choices[i] === this.state.list[i].correct_answer)
       if(this.state.choices[i] === this.state.list[i].correct_answer) {
         total++;
       }
