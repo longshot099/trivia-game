@@ -122,6 +122,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: '85%',
     padding: 30,
+    alignSelf: 'center',
     fontSize: 24
   },
   options: {

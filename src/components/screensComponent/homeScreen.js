@@ -32,9 +32,9 @@ export default class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>
-          Welcome to the Trivia Game! Tap BEGIN to start.
-        </Text>
+        <Text style={styles.title}>Welcome to the Trivia Game!</Text>
+        <Text style={styles.statement}>You will be presented with 10 True of False questions.</Text>
+        <Text style={styles.title}>Can you score 100%?</Text>
 
         <TouchableOpacity 
           style={styles.button}
@@ -55,7 +55,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: 15
+    fontSize: 22,
+    fontWeight: 'bold',
+    marginBottom: 100,
+    marginTop: 90 
+  },
+  statement: {
+    padding: 20,
+    paddingLeft: 50,
+    paddingRight: 50,
+    fontSize: 22,
+    fontWeight: 'bold'
   },
   buttonText: {
     color: 'white'
@@ -65,7 +75,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
     padding: 10,
     paddingLeft: 40,
-    paddingRight: 40
+    paddingRight: 40,
   }
 });
 
