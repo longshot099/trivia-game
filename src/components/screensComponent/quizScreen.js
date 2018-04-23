@@ -15,27 +15,27 @@ export default class QuizScreen extends Component {
 
   static defaultProps = {
     list: [
-        {
-          "category": "Entertainment: Video Games",
-          "type": "boolean",
-          "difficulty": "hard",
-          "question": "Unturned originally started as a Roblox game.",
-          "correct_answer": "True",
-          "incorrect_answers": [
-            "False"
-          ]
-        },
-        {
-          "category": "History",
-          "type": "boolean",
-          "difficulty": "hard",
-          "question": "George Washington was the 31st President of Australia.",
-          "correct_answer": "False",
-          "incorrect_answers": [
-            "True"
-          ]
-        }
-      ]
+      {
+        "category": "Entertainment: Video Games",
+        "type": "boolean",
+        "difficulty": "hard",
+        "question": "Unturned originally started as a Roblox game.",
+        "correct_answer": "True",
+        "incorrect_answers": [
+          "False"
+        ]
+      },
+      {
+        "category": "History",
+        "type": "boolean",
+        "difficulty": "easy",
+        "question": "George Washington was the 31st President of Australia.",
+        "correct_answer": "False",
+        "incorrect_answers": [
+          "True"
+        ]
+      }
+    ]
   }
 
   constructor(props) {
@@ -49,11 +49,12 @@ export default class QuizScreen extends Component {
 
   chooseAnswer = (answer) => (event) => {
     const MAX_COUNT = 1;
+    const answerString = answer === true? "True" : "False";
 
     if(this.state.num === MAX_COUNT) {
       this.setState(prevState => {
         return {
-          choices: [...prevState.choices, answer]
+          choices: [...prevState.choices, answerString]
         }
       }, () => {
         Actions.results({
@@ -64,7 +65,7 @@ export default class QuizScreen extends Component {
     } else {
       this.setState(prevState => {
         return {
-          choices: [...prevState.choices, answer],
+          choices: [...prevState.choices, answerString],
           num: prevState.num + 1
         }
       });
@@ -73,18 +74,16 @@ export default class QuizScreen extends Component {
   }
 
   render() {
-    console.log(this.state);
     const _this = this;
     const { num } = this.state;
-    const { category } = this.state.list[num]
+    const { category, difficulty, question } = this.state.list[num];
 
     return (
       <View style={styles.container}>
         <Text style={styles.category}>{ category }</Text>
-        <Text style={styles.category}>{this.state.list[num].difficulty.toUpperCase()}</Text>
-        <Text style={styles.question}>
-          {this.props.list[num].question}
-        </Text>
+        <Text style={styles.category}>{ difficulty.toUpperCase() }</Text>
+        <Text style={styles.question}>{ question }</Text>
+        <Text style={styles.category}>{ num+1 + " of 10"}</Text>
 
         <View style={styles.options}>
           <TouchableOpacity 
@@ -121,13 +120,15 @@ const styles = StyleSheet.create({
   question: {
     alignSelf: 'center',
     borderColor: 'black',
-    borderWidth: 2,
-    marginTop: 15,
-    padding: 30,
-    fontSize: 18
+    borderWidth: 1,
+    marginTop: '15%',
+    marginBottom: 10,
+    padding: 50,
+    fontSize: 24
   },
   options: {
     flexDirection:'row',
+    marginTop: 10
   },
 
   buttonTrue: {
