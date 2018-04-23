@@ -35,7 +35,11 @@ export default class ResultsScreen extends Component {
     const { score } = this.props;
 
     return (
-      <ScrollView style={styles.contentContainer}>
+      <ScrollView 
+        style={styles.contentContainer}
+        automaticallyAdjustContentInsets={false}
+        scrollEventThrottle={200}
+      >
         <View style={styles.viewContainer}>
           <Text style={styles.resultText}>Your Scored {score +"/10"}</Text>
           <Text style={styles.resultText}>Your Results</Text>
