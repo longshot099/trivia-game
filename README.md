@@ -1,1 +1,1 @@
-Optimized for Iphone X.
+Created for Iphone X. Trivia Application MVP using API from Open Trivia Database. MVP completed in ~9 hours.
