@@ -33,7 +33,7 @@ export default class HomeScreen extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Welcome to the Trivia Game!</Text>
-        <Text style={styles.statement}>You will be presented with 10 True of False questions.</Text>
+        <Text style={styles.statement}>You will be presented with 10 True or False questions.</Text>
         <Text style={styles.title}>Can you score 100%?</Text>
 
         <TouchableOpacity 
